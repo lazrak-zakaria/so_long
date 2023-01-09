@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:31:14 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/09 12:48:32 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/09 14:05:21 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	fill_map_struct(char **mem, t_map *map)
 int	check_wall(t_map *map_s)
 {
 	int	i;
-	int	j;
 	int	l;
 
 	l = map_s->line - 1;

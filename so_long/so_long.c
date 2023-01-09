@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:29:52 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/09 12:38:56 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/09 14:05:33 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av)
 {
 	int		l;
-	char	*mem;
 	t_map	map;
 
 	if (ac != 2)
