@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/09 12:31:14 by zlazrak           #+#    #+#             */
+/*   Updated: 2023/01/09 12:48:32 by zlazrak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_map(char **av, t_map *map_s)
-{ 
-	read_map(av, map_s); 
-	if (!check_wall(map_s))   
+{
+	read_map(av, map_s);
+	if (!check_wall(map_s))
 		ft_free_and_print(map_s->map, 1, "THE MAP SHOULD BE SUROUNDED BY WALL");
-	if (!ft_check_num_of_characters(map_s))
+	if (!(map_s->exit == 1 && map_s->player == 1 && map_s->collectibles > 0))
 		ft_free_and_print(map_s->map, 1, "The map must contain 1 exit, at least 1 collectible, and 1 starting position to be valid");
 	if (!ft_check_path(map_s))
 		ft_free_and_print(map_s->map, 1, "NO VALID PATH ON THE MAP!! ~_~");
 }
 
-void	ft_free_and_print(char **mem, int status, char *s)
+void	ft_putstr(char *s)
 {
-	ft_mem_free(mem);
-	if (*s)
-		ft_putstr(s);
-	exit(status);
+	write(1, s, ft_strlen(s));
+	ft_putchar('\n');
 }
+
 void	read_map(char **av, t_map *map_s)
 {
 	char	*mem;
@@ -30,6 +41,7 @@ void	read_map(char **av, t_map *map_s)
 		exit(EXIT_FAILURE);
 	}
 	mem = get_lines(fd);
+	close(fd);
 	map_s->map = ft_split(mem, '\n');
 	if (!map_s->map)
 	{
@@ -43,19 +55,19 @@ void	read_map(char **av, t_map *map_s)
 	if (map_s->character != (ft_strlen(map_s->map[0]) * map_s->line))
 		ft_free_and_print(map_s->map, 1, "THE MAP SHOULD BE RECTANGULAR");
 	if (map_s->error)
-		ft_free_and_print(map_s->map, 1, "THE MAP SHOULD CONTAIN ONLY : P, E, C, 0, 1 CHARACTERS");
+		ft_free_and_print(map_s->map, 1, "THE MAP SHOULD CONTAIN ONLY :\
+		 P, E, C, 0, 1 CHARACTERS");
 }
 
 void	fill_map_struct(char **mem, t_map *map)
 {
 	int		i;
-	int		len;
+	int		j;
 
 	i = -1;
-	len = ft_strlen(mem[0]);
 	while (mem[++i])
 	{
-		int j = -1;
+		j = -1;
 		while (mem[i][++j])
 		{
 			if (mem[i][j] == 'C')
@@ -86,7 +98,7 @@ int	check_wall(t_map *map_s)
 	i = 0;
 	while (map_s->map[0][i] && map_s->map[l][i])
 	{
-		if(map_s->map[0][i] != '1' || map_s->map[l][i] != '1')
+		if (map_s->map[0][i] != '1' || map_s->map[l][i] != '1')
 			return (0);
 		++i;
 	}
@@ -94,20 +106,9 @@ int	check_wall(t_map *map_s)
 	i = 0;
 	while (i < map_s->line)
 	{
-		if(map_s->map[i][0] != '1' || map_s->map[i][l] != '1')
+		if (map_s->map[i][0] != '1' || map_s->map[i][l] != '1')
 			return (0);
 		++i;
 	}
 	return (1);
 }
-
-int	ft_check_num_of_characters(t_map *map_s)
-{
-	return (map_s->exit == 1 &&  map_s->player == 1 && map_s->collectibles > 0);
-}
-
-/*
-up right down left
-dx[] = {-1, 0, 1, 0};
-dy[] = {0, 1, 0, -1};
-*/

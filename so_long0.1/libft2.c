@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:50:53 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/06 13:31:11 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/09 12:39:27 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,42 @@ int	ft_cmp(char *a, char *b, int n)
 	return (0);
 }
 
+void	*ft_memset(void *s, int n, int size)
+{
+	int		i;
+	char	*s1;
+
+	s1 = s;
+	i = -1;
+	while (++i < size)
+		s1[i] = n;
+	return (s);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		if (n < -9)
+			ft_putnbr((n / 10) * -1);
+		ft_putchar ((n % 10 * -1) + '0');
+	}
+	else if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putchar((n % 10) + '0');
+	}
+	else
+		ft_putchar(n + '0');
+}
+
 int	ft_strlen(char *s)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		i++;
+	i = -1;
+	while (s[++i])
+		;
 	return (i);
 }
