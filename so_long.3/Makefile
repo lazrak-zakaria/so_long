@@ -6,7 +6,7 @@
 #    By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 11:22:57 by zlazrak           #+#    #+#              #
-#    Updated: 2023/01/13 14:26:06 by zlazrak          ###   ########.fr        #
+#    Updated: 2023/01/15 10:42:37 by zlazrak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJS = check_map_path.o game_utils.o game.o get_lines.o libft.o libft2.o map.o g
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -l mlx -framework OpenGL -framework Appkit -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} -lmlx -framework OpenGL -framework Appkit -o ${NAME}
 
 clean :
 	rm -f ${OBJS}

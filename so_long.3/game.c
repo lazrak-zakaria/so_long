@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:30:53 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/13 13:44:12 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/15 13:43:54 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ int	handle_des(t_window *window)
 	exit(0);
 }
 
-int	handle_keypress(int keysym, t_window *window)
+int	handle_keypress(int key, t_window *window)
 {
-	if (keysym == 53)
+	if (key == 53)
 	{
 		ft_mem_free(window->map);
 		mlx_destroy_window(window->mlx, window->mlx_win);
 		exit(0);
 	}
-	else if (keysym == 126 || keysym == 13)
+	else if (key == 126 || key == 13)
 		move(window, "up");
-	else if (keysym == 124 || keysym == 2)
+	else if (key == 124 || key == 2)
 		move(window, "right");
-	else if (keysym == 125 || keysym == 1)
+	else if (key == 125 || key == 1)
 		move(window, "down");
-	else if (keysym == 123 || keysym == 0)
+	else if (key == 123 || key == 0)
 		move(window, "left");
 	return (0);
 }
@@ -44,15 +44,19 @@ void	game(t_map *map, int ll)
 
 	ft_memset(&window, 0, sizeof(window));
 	window.mlx = mlx_init();
+	if (!window.mlx)
+		ft_free_and_print(map->map, 1, "");
 	window.mlx_win = mlx_new_window(window.mlx, PX * ll,
 			PX * map->line, "so_long");
+	if (!window.mlx_win)
+		ft_free_and_print(map->map, 1, "");
 	game2(map->map, &window);
 	window.i = map->i;
 	window.j = map->j;
 	window.c = map->collectibles;
 	window.map = map->map;
-	mlx_hook(window.mlx_win, 2, 0, &handle_keypress, &window);
-	mlx_hook(window.mlx_win, 17, 0, &handle_des, &window);
+	mlx_hook(window.mlx_win, 2, 0, handle_keypress, &window);
+	mlx_hook(window.mlx_win, 17, 0, handle_des, &window);
 	mlx_loop(window.mlx);
 }
 

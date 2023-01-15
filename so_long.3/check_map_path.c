@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:30:44 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/13 09:13:15 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:04:53 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_fill_map_path(t_map_path *map_path, t_map *map_s)
 	map_path->map = malloc(sizeof(char *) * (map_s->line + 1));
 	if (!map_path->map)
 	{
-		perror("Error:");
+		perror("Error");
 		ft_free_and_print(map_s->map, 1, "");
 	}
 	i = -1;
@@ -86,7 +86,7 @@ void	ft_fill_map_path(t_map_path *map_path, t_map *map_s)
 		map_path->map[i] = ft_strdup(map_s->map[i]);
 		if (!map_path->map[i])
 		{
-			perror("Error:");
+			perror("Error");
 			ft_mem_free(map_path->map);
 			ft_free_and_print(map_s->map, 1, "");
 		}
