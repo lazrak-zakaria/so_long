@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:30:24 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/15 14:03:55 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/16 09:17:28 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*ft_read_map(char **av)
 	mem = get_lines(fd);
 	close(fd);
 	if (!mem)
-		ft_free_and_print(NULL, 1, "Error");
+		ft_free_and_print(NULL, 1, "Error\nin reading the file");
 	if (!check_map_new_line(mem))
 	{
 		free (mem);

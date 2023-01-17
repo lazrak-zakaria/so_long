@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:30:53 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/15 13:43:54 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/17 14:58:44 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ void	game2(char **map, t_window *win)
 	int	w;
 	int	h;
 
-	win->collectible = mlx_xpm_file_to_image(win->mlx, "./col.xpm", &w, &h);
-	win->exit = mlx_xpm_file_to_image(win->mlx, "./exit.xpm", &w, &h);
-	win->player = mlx_xpm_file_to_image(win->mlx, "./up.xpm", &w, &h);
-	win->wall = mlx_xpm_file_to_image(win->mlx, "./ww.xpm", &w, &h);
-	win->fre = mlx_xpm_file_to_image(win->mlx, "./empty.xpm", &w, &h);
-	win->down = mlx_xpm_file_to_image(win->mlx, "./down.xpm", &w, &h);
-	win->right = mlx_xpm_file_to_image(win->mlx, "./right.xpm", &w, &h);
-	win->left = mlx_xpm_file_to_image(win->mlx, "./left.xpm", &w, &h);
+	win->collectible = mlx_xpm_file_to_image(win->mlx, "./img/col.xpm", &w, &h);
+	win->exit = mlx_xpm_file_to_image(win->mlx, "./img/exit.xpm", &w, &h);
+	win->player = mlx_xpm_file_to_image(win->mlx, "./img/up.xpm", &w, &h);
+	win->wall = mlx_xpm_file_to_image(win->mlx, "./img/ww.xpm", &w, &h);
+	win->fre = mlx_xpm_file_to_image(win->mlx, "./img/empty.xpm", &w, &h);
+	win->down = mlx_xpm_file_to_image(win->mlx, "./img/down.xpm", &w, &h);
+	win->right = mlx_xpm_file_to_image(win->mlx, "./img/right.xpm", &w, &h);
+	win->left = mlx_xpm_file_to_image(win->mlx, "./img/left.xpm", &w, &h);
 	ft_check_xpm(win, map);
 	ft_put_imgs(map, win);
 }

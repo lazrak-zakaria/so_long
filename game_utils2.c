@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:22:34 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/15 11:25:54 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/16 09:07:16 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_do_move(t_window *win, int p_x, int p_y, char *c)
 	if (win->map[win->i][win->j] == 'E' && !win->c)
 	{
 		ft_mem_free(win->map);
-		write(1, "WIN\n", 5);
+		write(1, "WIN\n", 4);
 		mlx_destroy_window(win->mlx, win->mlx_win);
 		exit(0);
 	}
